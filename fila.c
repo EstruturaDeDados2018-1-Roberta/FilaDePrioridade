@@ -34,6 +34,10 @@ int desenfileira(fila *fila) {
 		int item = fila->cabeca->item;
 		no *no = fila->cabeca;
 		fila->cabeca = fila->cabeca->proximo;
+		fila->tamanho--;
+		if(tamanho(fila) == 0) {
+			fila->cauda = NULL;
+		}
 		free(no);
 		return item;
 	}
