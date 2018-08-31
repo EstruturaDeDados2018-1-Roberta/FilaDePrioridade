@@ -5,10 +5,8 @@
 #include "no.h"
 
 void enfileiraP(int item, int prioridade, fila *filaP) {
-	no *novoNo = criaNo(item, prioridade);
 	if(vazia(filaP)) {
-		filaP->cauda = novoNo;
-		filaP->cabeca = filaP->cauda;
+		enfileira(item, prioridade, filaP);
 	} else {
 		fila *filaAuxiliar = criaFila();
 		int posicao = 0;
@@ -26,6 +24,9 @@ void enfileiraP(int item, int prioridade, fila *filaP) {
 			enfileira(filaAuxiliar->cabeca->item, filaAuxiliar->cabeca->prioridade, filaP);
 			desenfileira(filaAuxiliar);
 			posicao--;
+		}
+		if(posicao == 0) {
+			enfileira(item, prioridade, filaP);
 		}
 	}
 }
